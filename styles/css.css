@@ -391,10 +391,17 @@ footer .social-links a img.zerozero-icon {
 
     /* CARROSSEL */
     .carousel {
-        max-width: 100%;
+        max-width: 100%; /* ocupa toda a largura do tele */
+    }
+
+    .carousel-track {
+        display: flex;
+        flex-wrap: nowrap;
     }
 
     .carousel-track img {
-        width: 100%;
+        width: 100%;       /* imagem ocupa toda a largura */
+        height: auto;      /* mantém proporção */
+        flex-shrink: 0;    /* não deixa encolher */
     }
 }
