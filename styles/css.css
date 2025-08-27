@@ -345,3 +345,56 @@ footer .social-links a img.zerozero-icon {
 .carousel-indicators .dot.active {
     background: #28a745;
 }
+
+@media (max-width: 768px) {
+
+    /* HEADER */
+    header .header-title {
+        max-width: 200px; /* reduz o título */
+        margin: 0 auto 15px auto;
+    }
+
+    nav {
+        flex-direction: column; /* menu em coluna */
+        align-items: center;
+    }
+
+    nav .menu {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    nav .flags {
+        position: static; /* retira absolute */
+        transform: none;
+        margin-top: 10px;
+        justify-content: center;
+    }
+
+    nav .flags img {
+        width: 40px; /* reduz tamanho bandeiras */
+    }
+
+    /* PERFIL */
+    .perfil-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    /* VIDEOS */
+    .videos iframe {
+        width: 100%; /* ocupa largura toda */
+        height: auto;
+        max-width: 350px;
+    }
+
+    /* CARROSSEL */
+    .carousel {
+        max-width: 100%;
+    }
+
+    .carousel-track img {
+        width: 100%;
+    }
+}
