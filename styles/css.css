@@ -1,0 +1,474 @@
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+body {
+    background: #0f0f0f;
+    color: #f5f5f5;
+    line-height: 1.6;
+}
+
+/* ===== HEADER ===== */
+header {
+    background: #111;
+    padding: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.6);
+}
+
+header .header-title {
+    display: block;
+    margin: 0 auto 30px auto; /* centraliza e mantém distância do menu */
+    max-width: 300px; /* ajusta conforme necessidade */
+    height: auto;
+}
+
+header .name {
+    font-size: 2.2rem;
+    color: #28a745;
+    text-align: center;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    font-family: BEBAS NEUE CYRILLIC;
+}
+
+/* ===== MENU ===== */
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #f5f5f5;
+    font-weight: 600;
+    padding: 10px 18px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    background: #28a745;
+    color: #fff;
+    box-shadow: 0 0 15px rgba(40, 167, 69, 0.6);
+}
+
+/* ===== SECTIONS ===== */
+section {
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 40px;
+    background: #1a1a1a;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+    animation: fadeIn 1s ease;
+}
+
+section h2 {
+    margin-bottom: 25px;
+    color: #28a745;
+    text-align: center;
+    font-size: 2rem;
+}
+
+/* ===== PERFIL ===== */
+#perfil {
+    text-align: center;
+}
+
+.perfil-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap; /* se for no telemóvel, fica em coluna */
+    margin-top: 20px;
+}
+
+.perfil-container img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #28a745;
+    transition: transform 0.3s ease;
+}
+
+.perfil-container img:hover {
+    transform: scale(1.05);
+}
+
+.perfil-container .dados {
+    text-align: left;
+    max-width: 400px;
+}
+
+.perfil-container .dados p {
+    font-size: 1.1rem;
+    margin: 8px 0;
+}
+
+/* ===== NAVBAR ===== */
+nav {
+    display: flex;
+    justify-content: center; /* mantém o menu centrado */
+    align-items: center;
+    position: relative;
+}
+
+nav .menu {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+/* Bandeiras no canto superior direito */
+nav .flags {
+    position: absolute;
+    right: 20px;  /* distância da borda direita */
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+nav .flags img {
+    width: 70px;
+    height: auto;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+nav .flags img:hover {
+    transform: scale(1.1);
+}
+
+
+/* ===== DESTAQUES ===== */
+.videos {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.videos video {
+    border-radius: 12px;
+    border: 2px solid #28a745;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.videos video:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 15px rgba(40, 167, 69, 0.7);
+}
+
+/* ===== EQUIPAS ===== */
+.equipas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 25px;
+}
+
+.equipa {
+    background: #222;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    display: flex;               /* Flexbox para organizar conteúdo */
+    flex-direction: column;      /* Coluna vertical */
+    justify-content: space-between; /* Empurra a data para o final */
+    min-height: 250px;           /* Altura mínima para consistência */
+}
+
+.equipa:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(40, 167, 69, 0.6);
+}
+
+.equipa img {
+    width: 100px;             /* tamanho uniforme */
+    height: 100px;
+    object-fit: contain;       /* mantém proporção da imagem */
+    margin: 0 auto 10px auto;  /* centraliza horizontalmente e espaço abaixo */
+    border-radius: 10px;
+    background: #fff;          /* fundo branco */
+    padding: 10px;             /* espaço interno */
+    display: block;            /* garante centralização */
+}
+
+.equipa p {
+    color: #f5f5f5;
+    font-weight: normal; /* datas normais */
+    margin: 5px 0;
+    font-size: small;
+}
+
+.equipa p.nome-equipa {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.equipa img.icone-pequena {
+    width: 30px;          /* tamanho pequeno */
+    height: 30px;
+    object-fit: contain;
+    background: transparent; /* sem fundo */
+    padding: 0;              /* remove padding extra */
+    margin: 5px auto 0 auto; /* centraliza horizontalmente, pequeno espaçamento acima */
+    display: block;          /* força centralização */
+}
+
+.equipa img.icone {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    background: transparent;
+    padding: 0;
+    margin-top: 5px;
+    display: inline-block;
+}
+
+
+/* ===== FOOTER ===== */
+footer {
+    text-align: center;
+    padding: 25px;
+    background: #111;
+    color: #bbb;
+    margin-top: 50px;
+    font-size: 0.9rem;
+}
+
+footer .social-links {
+    margin-top: 10px;
+}
+
+footer .social-links a {
+    display: inline-block;
+    margin: 0 10px;
+    transition: transform 0.3s ease;
+}
+
+footer .social-links a img {
+    width: 45px;
+    height: 45px;
+}
+
+footer .social-links a:hover {
+    transform: scale(1.2);
+}
+footer .social-links a img.zerozero-icon {
+    width: 170px;
+    height: 45px;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== CARROSSEL ===== */
+.carousel {
+    position: relative;
+    max-width: 500px;
+    margin: 0 auto 40px auto; /* adiciona margem inferior */
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    background: #111; /* fundo para destacar imagens menores */
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-track img {
+    width: 100%;
+    height: auto;
+    flex-shrink: 0;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* Botões */
+.carousel button.prev,
+.carousel button.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(40,167,69,0.8);
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    padding: 12px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 10; /* garante que fique acima das imagens */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    transition: background 0.3s, transform 0.3s;
+}
+
+.carousel button.prev:hover,
+.carousel button.next:hover {
+    background: rgba(40,167,69,1);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel button.prev {
+    left: 10px; /* distancia da esquerda */
+}
+
+.carousel button.next {
+    right: 10px; /* distancia da direita */
+}
+
+/* Indicadores */
+.carousel-indicators {
+    text-align: center;
+    margin-top: 12px;
+}
+
+.carousel-indicators .dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.carousel-indicators .dot.active {
+    background: #28a745;
+    transform: scale(1.2);
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 768px) {
+    .carousel {
+        max-width: 100%;
+    }
+
+    .carousel button.prev,
+    .carousel button.next {
+        font-size: 1.8rem;
+        padding: 10px;
+    }
+
+    .carousel-track img {
+        width: 100%;
+        height: auto;
+        flex-shrink: 0;
+    }
+}
+
+
+@media (max-width: 768px) {
+
+    /* HEADER */
+    header .header-title {
+        max-width: 200px; /* reduz o título */
+        margin: 0 auto 15px auto;
+    }
+
+    nav {
+        flex-direction: column; /* menu em coluna */
+        align-items: center;
+    }
+
+    nav .menu {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    nav .flags {
+        position: static; /* retira absolute */
+        transform: none;
+        margin-top: 10px;
+        justify-content: center;
+    }
+
+    nav .flags img {
+        width: 40px; /* reduz tamanho bandeiras */
+    }
+
+    /* PERFIL */
+    .perfil-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    /* VIDEOS */
+    .videos iframe {
+        width: 100%; /* ocupa largura toda */
+        height: auto;
+        max-width: 350px;
+    }
+
+    /* CARROSSEL */
+    .carousel {
+        max-width: 100%; /* ocupa toda a largura do tele */
+    }
+
+    .carousel-track {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+
+    .carousel-track img {
+        width: 100%;       /* imagem ocupa toda a largura */
+        height: auto;      /* mantém proporção */
+        flex-shrink: 0;    /* não deixa encolher */
+    }
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: #f5f5f5;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+        position: absolute;
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    nav .menu {
+        display: none;
+        flex-direction: column;
+        gap: 15px;
+        background: #1a1a1a;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    }
+
+    nav .menu.active {
+        display: flex;
+    }
+}
