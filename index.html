@@ -1,223 +1,242 @@
 <!DOCTYPE html>
 <html lang="pt">
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Eric Silva</title>
 
-    <meta name="keywords" content="Portfolio, Eric Silva, Atleta, Futebol">
-    <meta name="description" content="Página Principal do Portfólio de Eric Silva">
-    <meta name="author" content="Eric Silva">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Portfolio, Eric Silva, Atleta, Futebol" />
+    <meta
+      name="description"
+      content="Página Principal do Portfólio de Eric Silva"
+    />
+    <meta name="author" content="Eric Silva" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="icon" type="image/png" href="images/user.png"> <!-- ICON -->
-    <link href="./styles/css.css" rel="stylesheet" type="text/css" /> <!-- CSS -->
-    <script src="scripts/script.js" defer></script> <!-- JAVASCRIPT-->
+    <link rel="icon" type="image/png" href="images/user.png" />
+    <!-- ICON -->
+    <link href="./styles/css.css" rel="stylesheet" type="text/css" />
+    <!-- CSS -->
+    <script src="scripts/script.js" defer></script>
+    <!-- JAVASCRIPT -->
+  </head>
 
-</head>
-
-<body>
+  <body>
     <header>
+      <a class="brand" href="#perfil" aria-label="Ir para o topo">
+        <span class="brand-mark">ERIC</span>
+        <span class="brand-name">SILVA</span>
+      </a>
 
-        <a class="brand" href="#perfil" aria-label="Ir para o topo">
-            <span class="brand-mark">ERIC</span>
-            <span class="brand-name">SILVA</span>
-        </a>
+      <!-- Menu -->
+      <nav>
+        <button class="menu-toggle" aria-label="Abrir menu">&#9776;</button>
 
-        <!-- Menu -->
-        <nav>
+        <ul class="menu">
+          <li><a href="#perfil">Perfil</a></li>
+          <li><a href="#destaques">Destaques</a></li>
+          <li><a href="#equipas">Equipas</a></li>
+          <li><a href="#fotografias">Fotografias</a></li>
+        </ul>
 
-            <button class="menu-toggle" aria-label="Abrir menu">&#9776;</button>
-
-            <ul class="menu">
-                <li><a href="#perfil">Perfil</a></li>
-                <li><a href="#destaques">Destaques</a></li>
-                <li><a href="#equipas">Equipas</a></li>
-                <li><a href="#fotografias">Fotografias</a></li>
-
-            </ul>
-            <div class="flags">
-                <img src="images/pt.png" alt="Portugal">
-                <img src="images/timor.png" alt="Timor-Leste">
-            </div>
-        </nav>
+        <div class="flags">
+          <img src="images/pt.png" alt="Portugal" />
+          <img src="images/timor.png" alt="Timor-Leste" />
+        </div>
+      </nav>
     </header>
 
     <!-- Perfil -->
     <section id="perfil">
-        <h2>Perfil</h2>
-        <div class="perfil-container">
-            <img src="images/pref.jpeg" alt="Foto de Eric Silva">
-            <div class="dados">
-                <p><strong>Nome:</strong> Eric Tomás Tam Silva</p>
-                <p><strong>Idade:</strong> <span id="idade"></span> anos</p>
-                <p><strong>Posição:</strong> Defesa Central / Defesa Esquerdo</p>
-                <p><strong>Pé Dominante:</strong> Esquerdo</p>
-                <p><strong>Altura:</strong> 180 cm</p>
-            </div>
+      <h2>Perfil</h2>
+
+      <div class="perfil-container">
+        <img src="images/pref.jpeg" alt="Foto de Eric Silva" />
+
+        <div class="dados">
+          <p><strong>Nome:</strong> Eric Tomás Tam Silva</p>
+          <p><strong>Idade:</strong> <span id="idade"></span> anos</p>
+          <p><strong>Posição:</strong> Defesa Central / Defesa Esquerdo</p>
+          <p><strong>Pé Dominante:</strong> Esquerdo</p>
+          <p><strong>Altura:</strong> 180 cm</p>
         </div>
+      </div>
     </section>
 
     <!-- Destaques -->
     <section id="destaques">
-        <h2>Destaques</h2>
-        <div class="videos">
-            <iframe width="400" height="225" src="https://www.youtube.com/embed/MEPHR2QDxh8?start=5" title="Vídeo 1"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen>
-            </iframe>
+      <h2>Destaques</h2>
 
-            <iframe width="400" height="225" src="https://www.youtube.com/embed/HrBdbC8nUvQ?start=3" title="Vídeo 2"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen>
-            </iframe>
-        </div>
+      <div class="videos">
+        <iframe
+          width="400"
+          height="225"
+          src="https://www.youtube.com/embed/MEPHR2QDxh8?start=5"
+          title="Vídeo 1"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+
+        <iframe
+          width="400"
+          height="225"
+          src="https://www.youtube.com/embed/HrBdbC8nUvQ?start=3"
+          title="Vídeo 2"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
     </section>
-
 
     <!-- Equipas -->
     <section id="equipas">
-        <h2>Equipas</h2>
-        <div class="equipas-grid">
+      <h2>Equipas</h2>
 
-            <div class="equipa">
-                <img src="images/sesimbra.png" alt="Comércio Indústria">
-                <p class="nome-equipa">Sesimbra</p>
-                <p>2025/2026</p>
-            </div>
-
-            <div class="equipa">
-                <img src="images/comercio.png" alt="Comércio Indústria">
-                <p class="nome-equipa">Comércio Indústria</p>
-                <p>2024/2025</p>
-            </div>
-
-            <div class="equipa">
-                <img src="images/vitoria.png" alt="Vitória de Setúbal">
-                <p class="nome-equipa">Vitória de Setúbal</p>
-                <p>2013/2024</p>
-            </div>
-
-            <div class="equipa">
-                <img src="images/portosantense.png" alt="Portosantense">
-                <p class="nome-equipa">Portosantense</p>
-                <img src="images/trofeu.png" alt="Troféu" class="icone-pequena">
-                <p>2022/2023</p>
-            </div>
-
-            <div class="equipa">
-                <img src="images/estrela.png" alt="Estrela da Amadora">
-                <p class="nome-equipa">Estrela da Amadora</p>
-                <p>2021/2022</p>
-            </div>
-
-            <div class="equipa">
-                <img src="images/estrela.png" alt="Estrela da Amadora">
-                <p class="nome-equipa">Estrela da Amadora</p>
-                <p>2020/2021</p>
-            </div>
-
-            <div class="equipa">
-                <img src="images/comercio.png" alt="Comércio Indústria">
-                <p class="nome-equipa">Comércio Indústria</p>
-                <p>2019/2020</p>
-            </div>
-
-            <div class="equipa">
-                <img src="images/pinhal.png" alt="Pinhalnovense">
-                <p class="nome-equipa">Pinhalnovense</p>
-                <p>2018/2019</p>
-            </div>
-
-            <div class="equipa">
-                <img src="images/pinhal.png" alt="Pinhalnovense">
-                <p class="nome-equipa">Pinhalnovense</p>
-                <p>2017/2018</p>
-            </div>
-
-            <div class="equipa">
-                <img src="images/peles.png" alt="Pelezinhos">
-                <p class="nome-equipa">Pelezinhos</p>
-                <p>2016/2017</p>
-            </div>
-
-            <div class="equipa">
-                <img src="images/vitoria.png" alt="Vitória de Setúbal">
-                <p class="nome-equipa">Vitória de Setúbal</p>
-                <p>2016/2017</p>
-            </div>
-
-            <div class="equipa">
-                <img src="images/vitoria.png" alt="Vitória de Setúbal">
-                <p class="nome-equipa">Vitória de Setúbal</p>
-                <p>2015/2016</p>
-            </div>
-
-            <div class="equipa">
-                <img src="images/comercio.png" alt="Comércio Indústria">
-                <p class="nome-equipa">Comércio Indústria</p>
-                <p>2014/2015</p>
-            </div>
-
-            <div class="equipa">
-                <img src="images/comercio.png" alt="Comércio Indústria">
-                <p class="nome-equipa">Comércio Indústria</p>
-                <p>2013/2014</p>
-            </div>
-
-            <div class="equipa">
-                <img src="images/peles.png" alt="Pelezinhos">
-                <p class="nome-equipa">Pelezinhos</p>
-                <p>2011/2012</p>
-            </div>
-
-            <div class="equipa">
-                <img src="images/peles.png" alt="Pelezinhos">
-                <p class="nome-equipa">Pelezinhos</p>
-                <p>2010/2011</p>
-            </div>
+      <div class="equipas-grid">
+        <div class="equipa">
+          <img src="images/sesimbra.png" alt="Comércio Indústria" />
+          <p class="nome-equipa">Sesimbra</p>
+          <p>2025/2026</p>
         </div>
+
+        <div class="equipa">
+          <img src="images/comercio.png" alt="Comércio Indústria" />
+          <p class="nome-equipa">Comércio Indústria</p>
+          <p>2024/2025</p>
+        </div>
+
+        <div class="equipa">
+          <img src="images/vitoria.png" alt="Vitória de Setúbal" />
+          <p class="nome-equipa">Vitória de Setúbal</p>
+          <p>2013/2024</p>
+        </div>
+
+        <div class="equipa">
+          <img src="images/portosantense.png" alt="Portosantense" />
+          <p class="nome-equipa">Portosantense</p>
+          <img src="images/trofeu.png" alt="Troféu" class="icone-pequena" />
+          <p>2022/2023</p>
+        </div>
+
+        <div class="equipa">
+          <img src="images/estrela.png" alt="Estrela da Amadora" />
+          <p class="nome-equipa">Estrela da Amadora</p>
+          <p>2021/2022</p>
+        </div>
+
+        <div class="equipa">
+          <img src="images/estrela.png" alt="Estrela da Amadora" />
+          <p class="nome-equipa">Estrela da Amadora</p>
+          <p>2020/2021</p>
+        </div>
+
+        <div class="equipa">
+          <img src="images/comercio.png" alt="Comércio Indústria" />
+          <p class="nome-equipa">Comércio Indústria</p>
+          <p>2019/2020</p>
+        </div>
+
+        <div class="equipa">
+          <img src="images/pinhal.png" alt="Pinhalnovense" />
+          <p class="nome-equipa">Pinhalnovense</p>
+          <p>2018/2019</p>
+        </div>
+
+        <div class="equipa">
+          <img src="images/pinhal.png" alt="Pinhalnovense" />
+          <p class="nome-equipa">Pinhalnovense</p>
+          <p>2017/2018</p>
+        </div>
+
+        <div class="equipa">
+          <img src="images/peles.png" alt="Pelezinhos" />
+          <p class="nome-equipa">Pelezinhos</p>
+          <p>2016/2017</p>
+        </div>
+
+        <div class="equipa">
+          <img src="images/vitoria.png" alt="Vitória de Setúbal" />
+          <p class="nome-equipa">Vitória de Setúbal</p>
+          <p>2016/2017</p>
+        </div>
+
+        <div class="equipa">
+          <img src="images/vitoria.png" alt="Vitória de Setúbal" />
+          <p class="nome-equipa">Vitória de Setúbal</p>
+          <p>2015/2016</p>
+        </div>
+
+        <div class="equipa">
+          <img src="images/comercio.png" alt="Comércio Indústria" />
+          <p class="nome-equipa">Comércio Indústria</p>
+          <p>2014/2015</p>
+        </div>
+
+        <div class="equipa">
+          <img src="images/comercio.png" alt="Comércio Indústria" />
+          <p class="nome-equipa">Comércio Indústria</p>
+          <p>2013/2014</p>
+        </div>
+
+        <div class="equipa">
+          <img src="images/peles.png" alt="Pelezinhos" />
+          <p class="nome-equipa">Pelezinhos</p>
+          <p>2011/2012</p>
+        </div>
+
+        <div class="equipa">
+          <img src="images/peles.png" alt="Pelezinhos" />
+          <p class="nome-equipa">Pelezinhos</p>
+          <p>2010/2011</p>
+        </div>
+      </div>
     </section>
 
-
+    <!-- Fotografias -->
     <section id="fotografias">
-        <h2>Fotografias</h2>
-        <div class="carousel">
-            <button class="prev">&#10094;</button>
-            <div class="carousel-track">
-                <img src="images/1.jpg" alt="Imagem 1">
-                <img src="images/2.jpg" alt="Imagem 2">
-                <img src="images/3.jpg" alt="Imagem 3">
-                <img src="images/4.jpg" alt="Imagem 4">
-                <img src="images/5.JPG" alt="Imagem 5">
-                <img src="images/6.JPG" alt="Imagem 6">
-                <img src="images/7.jpg" alt="Imagem 7">
-                <img src="images/8.jpg" alt="Imagem 8">
-                <img src="images/9.jpg" alt="Imagem 9">
-                <img src="images/10.JPG" alt="Imagem 10">
-                <img src="images/12.jpeg" alt="Imagem 12">
-                <img src="images/13.jpeg" alt="Imagem 13">
-            </div>
-            <button class="next">&#10095;</button>
+      <h2>Fotografias</h2>
+
+      <div class="carousel">
+        <button class="prev">&#10094;</button>
+
+        <div class="carousel-track">
+          <img src="images/1.jpg" alt="Imagem 1" />
+          <img src="images/2.jpg" alt="Imagem 2" />
+          <img src="images/3.jpg" alt="Imagem 3" />
+          <img src="images/4.jpg" alt="Imagem 4" />
+          <img src="images/5.JPG" alt="Imagem 5" />
+          <img src="images/6.JPG" alt="Imagem 6" />
+          <img src="images/7.jpg" alt="Imagem 7" />
+          <img src="images/8.jpg" alt="Imagem 8" />
+          <img src="images/9.jpg" alt="Imagem 9" />
+          <img src="images/10.JPG" alt="Imagem 10" />
+          <img src="images/12.jpeg" alt="Imagem 12" />
+          <img src="images/13.jpeg" alt="Imagem 13" />
         </div>
-        <div class="carousel-indicators"></div>
+
+        <button class="next">&#10095;</button>
+      </div>
+
+      <div class="carousel-indicators"></div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <h2>Redes Sociais</h2>
-        <div class="social-links">
-            <a href="https://www.zerozero.pt/jogador/eric-silva/524206" target="_blank">
-                <img src="images/zerozero.png" alt="Zerozero" class="zerozero-icon">
-            </a>
-            <a href="https://www.instagram.com/erictomas8/" target="_blank">
-                <img src="images/insta.png" alt="Instagram">
-            </a>
+      <h2>Redes Sociais</h2>
 
-        </div>
+      <div class="social-links">
+        <a
+          href="https://www.zerozero.pt/jogador/eric-silva/524206"
+          target="_blank"
+        >
+          <img src="images/zerozero.png" alt="Zerozero" class="zerozero-icon" />
+        </a>
+
+        <a href="https://www.instagram.com/erictomas8/" target="_blank">
+          <img src="images/insta.png" alt="Instagram" />
+        </a>
+      </div>
     </footer>
-</body>
-
+  </body>
 </html>

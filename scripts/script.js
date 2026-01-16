@@ -1,171 +1,211 @@
-document.addEventListener("DOMContentLoaded", () => {
-  /* =========================
-     IDADE
-     ========================= */
-  function calcularIdade(dataNascimento) {
-    const hoje = new Date();
-    const nascimento = new Date(dataNascimento);
-    let idade = hoje.getFullYear() - nascimento.getFullYear();
-    const mes = hoje.getMonth() - nascimento.getMonth();
-    if (mes < 0 || (mes === 0 && hoje.getDate() < nascimento.getDate())) {
-      idade--;
-    }
-    return idade;
-  }
+/* =========================================================
+   ERIC SILVA — script.js (organizado + comentado)
+   - Menu mobile (hamburger + fullscreen)
+   - Idade automática
+   - Carrossel (setas + dots)
+   ========================================================= */
 
-  const dataNascimento = "2002-07-10";
-  const idadeEl = document.getElementById("idade");
-  if (idadeEl) idadeEl.textContent = calcularIdade(dataNascimento);
+/* =========================================================
+   1) HELPERS (funções pequenas para facilitar)
+   ========================================================= */
 
-  /* =========================
-     CARROSSEL
-     ========================= */
-  const track = document.querySelector(".carousel-track");
-  const slides = track ? Array.from(track.children) : [];
-  const nextButton = document.querySelector(".carousel .next");
-  const prevButton = document.querySelector(".carousel .prev");
-  const indicatorsContainer = document.querySelector(".carousel-indicators");
-
-  if (track && slides.length && nextButton && prevButton && indicatorsContainer) {
-    let index = 0;
-    const intervalTime = 3000;
-    let autoSlide;
-
-    // Criar indicadores
-    slides.forEach((_, i) => {
-      const dot = document.createElement("span");
-      dot.classList.add("dot");
-      if (i === 0) dot.classList.add("active");
-      dot.addEventListener("click", () => {
-        index = i;
-        updateCarousel();
-        startAutoSlide();
-      });
-      indicatorsContainer.appendChild(dot);
-    });
-
-    function updateIndicators() {
-      indicatorsContainer.querySelectorAll(".dot").forEach((dot, i) => {
-        dot.classList.toggle("active", i === index);
-      });
-    }
-
-    function updateCarousel() {
-      if (!slides.length) return;
-      const width = slides[0].offsetWidth;
-      track.style.transform = `translateX(-${index * width}px)`;
-      updateIndicators();
-    }
-
-    function stopAutoSlide() {
-      clearInterval(autoSlide);
-    }
-
-    function startAutoSlide() {
-      stopAutoSlide();
-      autoSlide = setInterval(() => {
-        index = (index + 1) % slides.length;
-        updateCarousel();
-      }, intervalTime);
-    }
-
-    nextButton.addEventListener("click", () => {
-      index = (index + 1) % slides.length;
-      updateCarousel();
-      startAutoSlide();
-    });
-
-    prevButton.addEventListener("click", () => {
-      index = (index - 1 + slides.length) % slides.length;
-      updateCarousel();
-      startAutoSlide();
-    });
-
-    const carousel = document.querySelector(".carousel");
-    carousel.addEventListener("mouseenter", stopAutoSlide);
-    carousel.addEventListener("mouseleave", startAutoSlide);
-
-    window.addEventListener("resize", updateCarousel);
-
-    window.addEventListener("load", () => {
-      updateCarousel();
-      startAutoSlide();
-    });
-  }
-
-  /* =========================
-     HAMBURGER MENU
-     ========================= */
-  /* =========================
-   HAMBURGER MENU (fullscreen no mobile)
-   ========================= */
-const menuToggle = document.querySelector(".menu-toggle");
-const menu = document.querySelector("nav .menu");
-const menuLinks = document.querySelectorAll("nav .menu a");
-const headerEl = document.querySelector("header");
-
-if (menuToggle && menu) {
-  menuToggle.addEventListener("click", () => {
-    const isOpen = menu.classList.toggle("active");
-    document.body.classList.toggle("menu-open", isOpen);
-    if (headerEl) headerEl.classList.toggle("menu-open", isOpen);
-  });
-
-  menuLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      menu.classList.remove("active");
-      document.body.classList.remove("menu-open");
-      if (headerEl) headerEl.classList.remove("menu-open");
-    });
-  });
+/**
+ * Seleciona 1 elemento (atalho)
+ * @param {string} selector
+ * @param {ParentNode} scope
+ */
+function $(selector, scope = document) {
+  return scope.querySelector(selector);
 }
 
+/**
+ * Seleciona vários elementos (atalho)
+ * @param {string} selector
+ * @param {ParentNode} scope
+ */
+function $all(selector, scope = document) {
+  return Array.from(scope.querySelectorAll(selector));
+}
 
-  /* =========================
-     MENU ATIVO (Perfil / Destaques / etc.)
-     ========================= */
-  const sections = Array.from(document.querySelectorAll("section[id]"));
-  const navLinks = Array.from(document.querySelectorAll("nav .menu a"));
+/* =========================================================
+   2) MENU MOBILE (abrir/fechar)
+   ========================================================= */
 
-  const setActive = (id) => {
-    navLinks.forEach((a) => {
-      const target = (a.getAttribute("href") || "").replace("#", "");
-      a.classList.toggle("is-active", target === id);
-    });
-  };
+(function setupMobileMenu() {
+  // Botão hamburger
+  const toggleBtn = $(".menu-toggle");
 
-  // Ativo ao carregar (hash ou perfil)
-  const startId = (location.hash || "#perfil").replace("#", "");
-  setActive(startId);
+  // Lista do menu <ul class="menu">
+  const menu = $("nav .menu");
 
-  // Ativo ao clicar (responde logo)
-  navLinks.forEach((a) => {
-    a.addEventListener("click", () => {
-      const id = (a.getAttribute("href") || "").replace("#", "");
-      if (id) setActive(id);
+  // Header (o teu CSS usa header.menu-open para esconder flags no overlay)
+  const header = $("header");
+
+  // Links do menu (para fechar quando clicas numa secção)
+  const menuLinks = $all("nav .menu a");
+
+  // Se algum elemento não existir, não faz nada (evita erros)
+  if (!toggleBtn || !menu || !header) return;
+
+  /**
+   * Abre/fecha o menu
+   * - .active -> mostra o overlay (CSS)
+   * - body.menu-open -> bloqueia scroll (CSS)
+   * - header.menu-open -> esconde flags enquanto menu está aberto (CSS)
+   */
+  function toggleMenu() {
+    const isOpen = menu.classList.contains("active");
+
+    if (isOpen) {
+      // FECHAR
+      menu.classList.remove("active");
+      document.body.classList.remove("menu-open");
+      header.classList.remove("menu-open");
+
+      // Acessibilidade (opcional)
+      toggleBtn.setAttribute("aria-expanded", "false");
+    } else {
+      // ABRIR
+      menu.classList.add("active");
+      document.body.classList.add("menu-open");
+      header.classList.add("menu-open");
+
+      // Acessibilidade (opcional)
+      toggleBtn.setAttribute("aria-expanded", "true");
+    }
+  }
+
+  // Clicar no hamburger -> abre/fecha
+  toggleBtn.addEventListener("click", toggleMenu);
+
+  // Clicar num link -> fecha menu (em mobile)
+  menuLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      // Só fecha se estiver aberto
+      if (menu.classList.contains("active")) toggleMenu();
     });
   });
 
-  // Ativo ao scroll (o mais importante)
-  if (sections.length && navLinks.length) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+  // Tecla ESC -> fecha menu se estiver aberto
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && menu.classList.contains("active")) {
+      toggleMenu();
+    }
+  });
+})();
 
-        if (visible.length) {
-          setActive(visible[0].target.id);
-        }
-      },
-      {
-        // Ajuste para header sticky: considera “ativa” a secção quando passa por baixo do header
-        root: null,
-        threshold: [0.15, 0.25, 0.35, 0.5, 0.65],
-        rootMargin: "-140px 0px -55% 0px",
-      }
-    );
+/* =========================================================
+   3) IDADE AUTOMÁTICA
+   ========================================================= */
 
-    sections.forEach((s) => observer.observe(s));
+(function setupAge() {
+  const ageEl = $("#idade");
+  if (!ageEl) return;
+
+  const birthDate = new Date(2002, 7, 10); 
+
+  const today = new Date();
+
+  let age = today.getFullYear() - birthDate.getFullYear();
+
+  // Verifica se já fez anos este ano
+  const monthDiff = today.getMonth() - birthDate.getMonth();
+  const dayDiff = today.getDate() - birthDate.getDate();
+
+  // Se ainda não chegou ao mês do aniversário OU chegou mas ainda não chegou ao dia -> tira 1 ano
+  if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+    age--;
   }
-});
+
+  // Coloca no HTML
+  ageEl.textContent = age;
+})();
+
+/* =========================================================
+   4) CARROSSEL (setas + indicadores)
+   ========================================================= */
+
+(function setupCarousel() {
+  const carousel = $(".carousel");
+  if (!carousel) return;
+
+  const track = $(".carousel-track", carousel);
+  const images = $all(".carousel-track img", carousel);
+
+  const prevBtn = $(".prev", carousel);
+  const nextBtn = $(".next", carousel);
+
+  const indicatorsContainer = $(".carousel-indicators");
+  if (!track || images.length === 0 || !prevBtn || !nextBtn || !indicatorsContainer)
+    return;
+
+  // Índice atual da imagem
+  let currentIndex = 0;
+
+  /**
+   * Move o carrossel para a imagem atual
+   * Como cada imagem tem width: 100%, basta traduzir em %
+   */
+  function updateCarousel() {
+    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+    // Atualiza dots (bolinhas)
+    const dots = $all(".dot", indicatorsContainer);
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("active", i === currentIndex);
+    });
+  }
+
+  /**
+   * Cria as bolinhas (dots) automaticamente
+   */
+  function createDots() {
+    indicatorsContainer.innerHTML = ""; // limpa antes
+
+    images.forEach((_, i) => {
+      const dot = document.createElement("span");
+      dot.className = "dot";
+
+      // Ao clicar numa bolinha -> vai para essa imagem
+      dot.addEventListener("click", () => {
+        currentIndex = i;
+        updateCarousel();
+      });
+
+      indicatorsContainer.appendChild(dot);
+    });
+  }
+
+  /**
+   * Vai para a imagem anterior
+   */
+  function goPrev() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    updateCarousel();
+  }
+
+  /**
+   * Vai para a imagem seguinte
+   */
+  function goNext() {
+    currentIndex = (currentIndex + 1) % images.length;
+    updateCarousel();
+  }
+
+  // Botões
+  prevBtn.addEventListener("click", goPrev);
+  nextBtn.addEventListener("click", goNext);
+
+  // (Opcional) teclado: setas esquerda/direita
+  document.addEventListener("keydown", (e) => {
+    // Evita mexer no carrossel se o menu overlay estiver aberto
+    if (document.body.classList.contains("menu-open")) return;
+
+    if (e.key === "ArrowLeft") goPrev();
+    if (e.key === "ArrowRight") goNext();
+  });
+
+  // Inicializa
+  createDots();
+  updateCarousel();
+})();
